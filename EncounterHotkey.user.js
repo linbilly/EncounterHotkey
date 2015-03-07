@@ -6,8 +6,8 @@
 // @version     1
 // @grant       none
 // @author		Billy Lin
-// @updateURL
-// @downloadURL
+// @updateURL	https://github.com/linbilly/EncounterHotkey/raw/master/EncounterHotkey.meta.js
+// @downloadURL	https://github.com/linbilly/EncounterHotkey/raw/master/EncounterHotkey.user.js
 // ==/UserScript==
 
 window.addEventListener("load",function(){
