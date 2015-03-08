@@ -30,19 +30,19 @@ window.addEventListener("load",function(){
 				var previousLines = activeNote.value.substring(0, cursorLocation).split('\n');
 
 				var lastLine = previousLines[previousLines.length-1];
-				var myArray;
+				var resultArray;
 
 				// regex to find <BP 120/80> in the last line:
 				var bpRegex = /BP\s*(\d+)\/(\d+)/gi;
 
-				if((myArray=bpRegex.exec(lastLine))!==null){
-					enterBPMeasurement(myArray);
+				if((resultArray=bpRegex.exec(lastLine))!==null){
+					enterBPMeasurement(resultArray);
 				}
 
 				// THIS IS WHERE NEW REGEX CAN BE ADDED ALONG WITH NEW METHODS BELOW
 				// var newRegex = /some regex/gi;
-				// if((myArray = newRegex.exec(lastLine))!==null){
-				// 	dosomething(myArray);
+				// if((resultArray = newRegex.exec(lastLine))!==null){
+				// 	dosomething(resultArray);
 				// }
 			}
 		}
