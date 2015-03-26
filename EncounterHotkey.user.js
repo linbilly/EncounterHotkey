@@ -81,6 +81,13 @@ function enterBPMeasurement(matchedArray){
 			var mButton = measurementButtons[i];
 			if(mButton.getAttribute('value')=="Submit"){
 				mButton.click();
+				var timer = setInterval(function(){
+				//after the measurement window closes, 
+					activeNote.value = [oldvalue.slice(0, cursorLocation),'\n',oldvalue.slice(cursorLocation)].join('');
+					activeNote.focus();
+					activeNote.setSelectionRange(cursorLocation+1,cursorLocation+1);
+					clearInterval(timer);
+				},500);
 			}
 		}
 	};
@@ -102,15 +109,13 @@ function enterBPMeasurement(matchedArray){
 
 	// Some time after clicking on submit, the measurement window would close. As it closes, it will append a BP reading at the end of the current active note
 	// The code below remove the OSCAR generated BP reading at the end of the active note in favor of keeping the user typed BP value in its original place
-	var timer = setInterval(function(){
-		//after the measurement window closes, 
-		//if(measurementWindow.closed){
-			activeNote.value = [oldvalue.slice(0, cursorLocation),'\n',oldvalue.slice(cursorLocation)].join('');
-			activeNote.focus();
-			activeNote.setSelectionRange(cursorLocation+1,cursorLocation+1);
-			clearInterval(timer);
-		//}
-	},500);
+	// var timer = setInterval(function(){
+	// 	//after the measurement window closes, 
+	// 		activeNote.value = [oldvalue.slice(0, cursorLocation),'\n',oldvalue.slice(cursorLocation)].join('');
+	// 		activeNote.focus();
+	// 		activeNote.setSelectionRange(cursorLocation+1,cursorLocation+1);
+	// 		clearInterval(timer);
+	// },1000);
 }
 
 // ADD NEW FUNCTIONS HERE FOR MORE HOTKEYS ACTIONS
