@@ -3,14 +3,24 @@
 // @namespace   http://dev.drbillylin.com/oscarwiki
 // @description	Listens for hotkeys and do oscar functions. Eg. entering BP measurement when user types "BP 120/90".
 // @include     */casemgmt/forward.jsp?action=view*
-// @version     1.2026
+// @version     1.2
 // @grant       none
 // @author		Billy Lin
 // @updateURL	https://github.com/linbilly/EncounterHotkey/raw/master/EncounterHotkey.meta.js
 // @downloadURL	https://github.com/linbilly/EncounterHotkey/raw/master/EncounterHotkey.user.js
 // ==/UserScript==
 
-// The BP measurement group needs to be created first for this to work. 
+// Required setup. Do these exactly even if you don't need to use these vital signs, as the script enters values by counting the measurement types in order. 
+// 1. Create a "Patient Vital Measurements" measurement group 
+// 2. Add the following measurement types: 
+// 	a. BP
+// 	b. Blood Glucose
+//	c. Wt
+//	d. Temp
+//	e. Oxygen Saturation
+//	f. RR
+//	g. P 
+
 
 var activeNote;
 var oldvalue;
@@ -35,7 +45,7 @@ window.addEventListener("load",function(){
 
 		function findString(e){
 
-			const evt = e || window.event; // compliant with ie6     
+			evt = e || window.event; // compliant with ie6     
 
 			//if the user presses "Enter", proceed
 			if (evt.keyCode == 13) { 
